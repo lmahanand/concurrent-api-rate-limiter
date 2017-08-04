@@ -12,15 +12,17 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.*;
 
 /**
- * Provides Asychronous services against API Key
+ * AsyncApiKeyService class provides Asychronous services
+ * against each API Key
  */
+
 @Service
 public class AsyncApiKeyService implements IAsyncApiKeyService {
 
 
     private final Logger LOGGER = LoggerFactory.getLogger(AsyncApiKeyService.class);
 
-    @Value("10")
+    @Value("${THREADS}")
     private int nThreads;
 
     protected ExecutorService executorService;

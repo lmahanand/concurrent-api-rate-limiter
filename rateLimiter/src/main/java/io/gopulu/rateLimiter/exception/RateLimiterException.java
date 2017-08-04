@@ -20,10 +20,10 @@ public class RateLimiterException {
         }
     }
 
-    @ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason = "API Key is suspended for 5 minutes")
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason = "API Key is suspended for sometime")
     public static class SuspendedAPIKeyException extends Exception {
         public SuspendedAPIKeyException(String apiKey) {
-            super(String.format("API Key is suspended for 5 minutes: %s", apiKey));
+            super(String.format("API Key is suspended for sometime: %s", apiKey));
         }
     }
 

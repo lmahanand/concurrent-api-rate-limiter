@@ -19,14 +19,12 @@ import java.util.stream.Collectors;
 @Component
 public class CSVParser implements ICSVParser {
 
-    //@Value("${mongodb.url:127.0.0.1}")
     @Value("apikeys.csv")
     private String keyResource;
 
-    @Value("2000")
+    @Value("${ACCESS-TIME-WINDOW}")
     private long accessWindow;
 
-    //@Value("1")
     @Value("${GLOBAL-RATE-LIMIT}")
     private int globalRateLimit;
 

@@ -1,7 +1,6 @@
 package io.gopulu.rateLimiter.controller;
 
 import io.gopulu.rateLimiter.domain.Hotel;
-import io.gopulu.rateLimiter.exception.RateLimiterException;
 import io.gopulu.rateLimiter.service.IApiKeyService;
 import io.gopulu.rateLimiter.service.IHotelService;
 import org.springframework.beans.factory.annotation.Autowired;

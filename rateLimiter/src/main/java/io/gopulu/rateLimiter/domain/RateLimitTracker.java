@@ -28,7 +28,6 @@ public class RateLimitTracker {
             if (earliestTimestamp.longValue() <= earliest) {
                 this.timeSet.remove(earliestTimestamp);
             } else {
-                System.out.println(Thread.currentThread().getName());
                 break;
             }
         }
