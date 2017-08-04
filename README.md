@@ -12,11 +12,11 @@ Above rest url will give hotel details of city id 1.
 
 2. URL to access price of the hotels in ascending order of price
 
-http://localhost:8080/hotels/1/price/sort/asc -H "AUTHORIZED-API-KEY:abcXYZkeyAPI-0"  -X GET
+curl http://localhost:8080/hotels/1/price/sort/asc -H "AUTHORIZED-API-KEY:abcXYZkeyAPI-0"  -X GET
 
 3. URL to access price of the hotels in descending order of price
 
-http://localhost:8080/hotels/1/price/sort/desc -H "AUTHORIZED-API-KEY:abcXYZkeyAPI-0"  -X GET
+curl http://localhost:8080/hotels/1/price/sort/desc -H "AUTHORIZED-API-KEY:abcXYZkeyAPI-0"  -X GET
 
 
 At the moment it has loaded 4 api keys:
