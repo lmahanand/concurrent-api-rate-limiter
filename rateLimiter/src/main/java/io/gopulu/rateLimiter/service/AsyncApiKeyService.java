@@ -84,7 +84,6 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
 
         try {
             flag = recovered.get();
-            System.out.println(Thread.currentThread().getName() +", flag value: "+ flag);
             return flag;
         } catch (InterruptedException e) {
             LOGGER.error("Interrupted exception occurred: " + e);
@@ -102,5 +101,7 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
         executorService.awaitTermination(10, TimeUnit.SECONDS);
     }
 
-
+    public void createExecutorService(int nThreads){
+        executorService = Executors.newFixedThreadPool(nThreads);
+    }
 }

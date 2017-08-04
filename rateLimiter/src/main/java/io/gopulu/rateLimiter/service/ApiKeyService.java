@@ -27,7 +27,6 @@ public class ApiKeyService implements IApiKeyService{
         if(null == apiKeys || apiKeys.size()==0){
             return false;
         }
-        System.out.println("Last access time : "+apiKeys.get(apiKey).getLastAccessTime());
         return null != apiKeys.get(apiKey);
     }
 
@@ -57,7 +56,6 @@ public class ApiKeyService implements IApiKeyService{
             return false;
         }
         boolean flag = asyncApiKeyService.verifyApiAccessRate(apiKeys.get(apiKey).getLimitTracker());
-        System.out.println("canApiKeyBeSuspended : "+ flag);
         return flag;
     }
 
