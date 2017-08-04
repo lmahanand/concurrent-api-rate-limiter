@@ -75,10 +75,8 @@ public class HotelRestController {
 
         boolean isKeyActive = apiKeyService.isApiKeyActive(apiKey);
 
-        System.out.println("isKeyActive value: "+ isKeyActive);
 
         if (!isKeyActive) {
-            System.out.println("in isApiKeyActive of controller");
             throw new SuspendedAPIKeyException(apiKey);
         }
 

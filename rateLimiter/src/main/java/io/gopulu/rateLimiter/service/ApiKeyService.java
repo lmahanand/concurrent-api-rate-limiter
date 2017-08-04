@@ -12,7 +12,8 @@ public class ApiKeyService implements IApiKeyService{
     @Value("API-KEYS-CACHE")
     private String apiKeyCacheName;
 
-    @Value("20000")
+    //@Value("20000")
+    @Value("${SUSPEND-DURATION}")
     private int suspendDuration;
 
     @Autowired
