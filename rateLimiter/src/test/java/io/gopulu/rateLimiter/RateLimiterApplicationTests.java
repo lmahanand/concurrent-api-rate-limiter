@@ -21,7 +21,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -31,7 +30,6 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = HotelRestController.class, secure = false)
@@ -119,7 +117,7 @@ public class RateLimiterApplicationTests {
 		//Then : api key should be suspended for 5 minutes
 
 		Assert.assertEquals(401,result1.getResponse().getStatus());
-		Assert.assertEquals("API Key is suspended for 5 minutes",result1.getResponse().getErrorMessage());
+		Assert.assertEquals("API Key is suspended for sometime",result1.getResponse().getErrorMessage());
 
 	}
 
@@ -137,7 +135,7 @@ public class RateLimiterApplicationTests {
 
 		Mockito.when(apiKeyService.isApiKeyValid(Mockito.anyString())).thenReturn(true);
 		Mockito.when(apiKeyService.isApiKeyActive(Mockito.anyString())).thenReturn(true);
-		Mockito.when(apiKeyService.canApiKeyBeSuspended(Mockito.anyString())).thenReturn(true);
+		Mockito.when(apiKeyService.canApiKeyBeNotSuspended(Mockito.anyString())).thenReturn(true);
 
 
 		//When :

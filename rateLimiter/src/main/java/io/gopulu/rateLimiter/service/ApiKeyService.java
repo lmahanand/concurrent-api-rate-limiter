@@ -51,7 +51,7 @@ public class ApiKeyService implements IApiKeyService{
     }
 
     @Override
-    public boolean canApiKeyBeSuspended(String apiKey) {
+    public boolean canApiKeyBeNotSuspended(String apiKey) {
         LRUCache<String,ApiKey> apiKeys = getApiKeyCache();
         if(null == apiKeys || apiKeys.size()==0){
             return false;

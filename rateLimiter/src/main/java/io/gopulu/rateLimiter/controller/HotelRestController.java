@@ -79,7 +79,7 @@ public class HotelRestController {
             throw new SuspendedAPIKeyException(apiKey);
         }
 
-        if (!apiKeyService.canApiKeyBeSuspended(apiKey)) {
+        if (!apiKeyService.canApiKeyBeNotSuspended(apiKey)) {
             apiKeyService.suspendApiKey(apiKey);
             throw new SuspendedAPIKeyException(apiKey);
         }
