@@ -26,7 +26,8 @@ public class CSVParser implements ICSVParser {
     @Value("2000")
     private long accessWindow;
 
-    @Value("1")
+    //@Value("1")
+    @Value("${GLOBAL-RATE-LIMIT}")
     private int globalRateLimit;
 
     @Autowired
