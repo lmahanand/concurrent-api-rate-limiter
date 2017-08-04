@@ -22,7 +22,11 @@ http://localhost:8080/hotels/1/price/sort/desc -H "AUTHORIZED-API-KEY:abcXYZkeyA
 At the moment it has loaded 4 api keys:
 
 API-KEY,RATE-LIMIT
+
 abcXYZkeyAPI-0,1
+
 abcXYZkeyAPI-1
+
 abcXYZkeyAPI-2,1
+
 abcXYZkeyAPI-4,2
