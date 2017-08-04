@@ -1,6 +1,6 @@
 # concurrent-api-rate-limiter
 
-After having cloned the app, the app could be started by running mvn spring-boot:run under /rateLimiter .
+After having cloned the app, the app could be started by either running mvn spring-boot:run under /rateLimiter or by directly running the class RateLimiterApplication.java.
 
 It will load all hotel data to cache from hoteldb.csv file. And it will also load api keys from apikeys.csv file.
 
