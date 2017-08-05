@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static io.gopulu.rateLimiter.exception.RateLimiterException.*;
 
@@ -46,30 +47,21 @@ public class HotelRestController {
 
     @Async
     @GetMapping(value = "/hotels/{id}/price/sort/asc")
-    public CompletableFuture<List<Hotel>> sortHotelsOfCityByAscPrice(@RequestHeader(value = "AUTHORIZED-API-KEY", required = true) String apiKey, @PathVariable final String id)
+    public CompletableFuture<CopyOnWriteArrayList<Hotel>> sortHotelsOfCityByAscPrice(@RequestHeader(value = "AUTHORIZED-API-KEY", required = true) String apiKey, @PathVariable final String id)
             throws HotelsNotFoundException, InvalidAPIKeyException, SuspendedAPIKeyException {
         validateApiKey(apiKey);
-        List<Hotel> hotels = hotelService.sortAscHotelsOfCityByPrice(id);
 
-        if (null == hotels || hotels.size() < 1) {
-            throw new HotelsNotFoundException(id);
-        }
 
-        return CompletableFuture.completedFuture(hotels);
+        return hotelService.sortAscHotelsOfCityByPrice(id);
     }
 
     @Async
     @GetMapping(value = "/hotels/{id}/price/sort/desc")
-    public CompletableFuture<List<Hotel>> sortHotelsOfCityByDescPrice(@RequestHeader(value = "AUTHORIZED-API-KEY", required = true) String apiKey, @PathVariable final String id)
+    public CompletableFuture<CopyOnWriteArrayList<Hotel>> sortHotelsOfCityByDescPrice(@RequestHeader(value = "AUTHORIZED-API-KEY", required = true) String apiKey, @PathVariable final String id)
             throws HotelsNotFoundException, InvalidAPIKeyException, SuspendedAPIKeyException {
         validateApiKey(apiKey);
-        List<Hotel> hotels = hotelService.sortDescHotelsOfCityByPrice(id);
 
-        if (null == hotels || hotels.size() < 1) {
-            throw new HotelsNotFoundException(id);
-        }
-
-        return CompletableFuture.completedFuture(hotels);
+        return hotelService.sortDescHotelsOfCityByPrice(id);
     }
 
     private void validateApiKey(final String apiKey) throws InvalidAPIKeyException, SuspendedAPIKeyException {

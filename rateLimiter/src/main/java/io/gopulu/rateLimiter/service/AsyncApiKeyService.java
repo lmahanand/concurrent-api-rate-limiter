@@ -25,7 +25,11 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
     @Value("${THREADS}")
     private int nThreads;
 
-    protected ExecutorService executorService;
+    public ExecutorService getExecutorService() {
+        return executorService;
+    }
+
+    protected static ExecutorService executorService;
 
     @PostConstruct
     public void init() {
@@ -106,4 +110,7 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
     public void createExecutorService(int nThreads){
         executorService = Executors.newFixedThreadPool(nThreads);
     }
+
+
+
 }
