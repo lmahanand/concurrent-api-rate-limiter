@@ -100,7 +100,6 @@ public class RateLimiterApplicationTests {
 
 		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/hotels/1")
 				.header("AUTHORIZED-API-KEY","abcXYZkeyAPI-0")
-				//.requestAttr("AUTHORIZED-API-KEY","abcXYZkeyAPI-0")
 				.accept(
 						MediaType.APPLICATION_JSON);
 
@@ -112,12 +111,10 @@ public class RateLimiterApplicationTests {
 		//When : two concurrent requests within given access window by same api key
 
 		mockMvc.perform(requestBuilder).andReturn();
-		MvcResult result1 = mockMvc.perform(requestBuilder).andReturn();
+		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
 		//Then : api key should be suspended for 5 minutes
-
-		Assert.assertEquals(401,result1.getResponse().getStatus());
-		Assert.assertEquals("API Key is suspended for sometime",result1.getResponse().getErrorMessage());
+		Assert.assertTrue(result.getAsyncResult().toString().contains("API Key is suspended for sometime: abcXYZkeyAPI-0"));
 
 	}
 
@@ -141,12 +138,16 @@ public class RateLimiterApplicationTests {
 		//When :
 
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+		List<Hotel> hotels = (List<Hotel>) result.getAsyncResult();
 
 		//Then :
 
 		Assert.assertEquals(200,result.getResponse().getStatus());
-		Assert.assertEquals("[{\"city\":\"Bangkok\",\"id\":\"1\",\"room\":\"Deluxe\",\"price\":5000.0}]",result.getResponse().getContentAsString());
-
+		Assert.assertTrue(hotels.size()==1);
+		Assert.assertEquals("Bangkok", hotels.get(0).getCity());
+		Assert.assertEquals("1", hotels.get(0).getId());
+		Assert.assertEquals("Deluxe", hotels.get(0).getRoom());
+		Assert.assertEquals(5000.0, hotels.get(0).getPrice(),0);
 
 
 	}
