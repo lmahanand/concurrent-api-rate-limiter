@@ -34,10 +34,14 @@ abcXYZkeyAPI-4,2
 # Apache Benchmark metrics
 
 Total Number of requests : 1000
+
 Number of concurrent requests : 100
 
+
 Below is the command to get AB metrics
+
 ab -c 100 -n 1000 -H 'AUTHORIZED-API-KEY:abcXYZkeyAPI-4' -v 1 localhost:8080/hotels/1/price/sort/asc
+
 
 Metrics
 --------
