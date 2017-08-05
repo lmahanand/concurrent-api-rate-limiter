@@ -42,7 +42,7 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
                 CompletableFuture.runAsync(() -> {
                     apiKey.setLastAccessTime(System.currentTimeMillis());
                     apiKey.setActive(false);
-                    LOGGER.info("API KEY is Deactivated");
+                    LOGGER.info("API KEY is Deactivated: {}",apiKey.getKey());
 
                 },executorService);
 
@@ -52,7 +52,7 @@ public class AsyncApiKeyService implements IAsyncApiKeyService {
     private boolean enable(ApiKey apiKey){
         apiKey.setLastAccessTime(0);
         apiKey.setActive(true);
-        LOGGER.info("API KEY is Activated");
+        LOGGER.info("API KEY is Activated: {}",apiKey.getKey());
         return true;
     }
     @Override
