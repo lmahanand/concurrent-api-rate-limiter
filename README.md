@@ -101,8 +101,8 @@ Transfer rate:          234.70 [Kbytes/sec] received
 
 Connection Times (ms)
 ---------------------
-              min  mean[+/-sd] median   max
-              ------------------------------
+
+                min mean[+/-sd] median  max
 Connect:        0   39  38.4     27     168
 
 Processing:    16  105  43.7    112     347
