@@ -51,6 +51,7 @@ Completed 100 requests
 Completed 200 requests
 
 Completed 300 requests
+
 Completed 400 requests
 
 Completed 500 requests
@@ -81,11 +82,9 @@ Time taken for tests:   1.470 seconds
 
 Complete requests:      1000
 
-Failed requests:        1
+Failed requests:        0
 
-   (Connect: 0, Receive: 0, Length: 1, Exceptions: 0)
-   
-Non-2xx responses:      999
+Non-2xx responses:      1000
 
 Total transferred:      353223 bytes
 
@@ -101,9 +100,9 @@ Transfer rate:          234.70 [Kbytes/sec] received
 
 
 Connection Times (ms)
-
+---------------------
               min  mean[+/-sd] median   max
-              
+              ------------------------------
 Connect:        0   39  38.4     27     168
 
 Processing:    16  105  43.7    112     347
@@ -114,7 +113,7 @@ Total:         64  143  42.2    142     351
 
 
 Percentage of the requests served within a certain time (ms)
-
+------------------------------------------------------------
   50%    142
   
   66%    165
