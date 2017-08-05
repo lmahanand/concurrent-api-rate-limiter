@@ -16,7 +16,6 @@ import java.util.concurrent.CompletableFuture;
 import static io.gopulu.rateLimiter.exception.RateLimiterException.*;
 
 @RestController
-
 public class HotelRestController {
     @Autowired
     private IHotelService hotelService;
