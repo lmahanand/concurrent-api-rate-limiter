@@ -49,9 +49,8 @@ public class HotelRestController {
     @GetMapping(value = "/hotels/{id}/price/sort/asc")
     public CompletableFuture<CopyOnWriteArrayList<Hotel>> sortHotelsOfCityByAscPrice(@RequestHeader(value = "AUTHORIZED-API-KEY", required = true) String apiKey, @PathVariable final String id)
             throws HotelsNotFoundException, InvalidAPIKeyException, SuspendedAPIKeyException {
+
         validateApiKey(apiKey);
-
-
         return hotelService.sortAscHotelsOfCityByPrice(id);
     }
 

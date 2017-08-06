@@ -6,14 +6,15 @@ import io.gopulu.rateLimiter.domain.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.*;
 
 
 @Service
@@ -22,6 +23,15 @@ public class HotelService implements IHotelService {
     @Autowired
     private CacheStore cacheStore;
 
+    protected static ExecutorService executorService;
+
+    @Value("${THREADS}")
+    private int nThreads;
+
+    @PostConstruct
+    public void init() {
+        executorService = Executors.newFixedThreadPool(nThreads);
+    }
 
     @Override
     public List<Hotel> hotelsByCityId(String cityId) {
@@ -34,15 +44,13 @@ public class HotelService implements IHotelService {
 
     @Override
     public CompletableFuture<CopyOnWriteArrayList<Hotel>> sortAscHotelsOfCityByPrice(String cityId) {
-
-
         CompletableFuture<CopyOnWriteArrayList<Hotel>> hotelsCompletableFure = CompletableFuture.supplyAsync(() -> {
             LRUCache<String, CopyOnWriteArrayList<Hotel>> hotelCache = cacheStore.getCacheInstance("HOTEL_DB");
             CopyOnWriteArrayList<Hotel> safeHotelList = hotelCache.get(cityId);
             Collections.sort(safeHotelList, Comparator.comparingDouble(Hotel::getPrice));
             return safeHotelList;
 
-        }, AsyncApiKeyService.executorService);
+        }, executorService);
 
 
         return hotelsCompletableFure;
@@ -58,10 +66,19 @@ public class HotelService implements IHotelService {
             Collections.sort(safeHotelList, Comparator.comparingDouble(Hotel::getPrice).reversed());
             return safeHotelList;
 
-        }, AsyncApiKeyService.executorService);
+        }, executorService);
 
 
         return hotelsCompletableFure;
 
+    }
+
+    public void stopPool() throws InterruptedException {
+        executorService.shutdown();
+        executorService.awaitTermination(10, TimeUnit.SECONDS);
+    }
+
+    public void createExecutorService(int nThreads){
+        executorService = Executors.newFixedThreadPool(nThreads);
     }
 }

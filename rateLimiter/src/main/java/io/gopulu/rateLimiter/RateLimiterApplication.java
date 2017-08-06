@@ -91,7 +91,7 @@ public class RateLimiterApplication {
         LOGGER.info("Loading hotel csv data to cache.");
         int cityId = 1;
         for (String cityName : cities) {
-            CopyOnWriteArrayList<Hotel> hotelsByCity = getHotelsByCity1(cityName, hotels);
+            CopyOnWriteArrayList<Hotel> hotelsByCity = getHotelsByCity(cityName, hotels);
 
             cache.put(Integer.toString(cityId), hotelsByCity);
 
@@ -102,7 +102,7 @@ public class RateLimiterApplication {
         LOGGER.info("Data for {} cities loaded to cache.", cityId - 1);
     }
 
-    private CopyOnWriteArrayList<Hotel> getHotelsByCity1(final String city, final List<Hotel> hotels) {
+    private CopyOnWriteArrayList<Hotel> getHotelsByCity(final String city, final List<Hotel> hotels) {
         CopyOnWriteArrayList<Hotel> safeHotels = new CopyOnWriteArrayList<Hotel>();
 
         for (Hotel hotel : hotels) {
