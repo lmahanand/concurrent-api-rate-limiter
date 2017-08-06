@@ -56,12 +56,12 @@ Document Length:        198 bytes
 
 Concurrency Level:      100
 
-# Time taken for tests:   1.470 seconds
-
-# Complete requests:      1000
-
-# Failed requests:        0
-
+Time taken for tests:   1.470 seconds
+-----------------------------
+Complete requests:      1000
+-----------------------------
+Failed requests:        0
+-
 Non-2xx responses:      1000
 -----------------------------
 Requests per second:    680.40 [#/sec] (mean)
