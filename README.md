@@ -34,17 +34,17 @@ abcXYZkeyAPI-4,2
 # Apache Benchmark metrics
 
 Total Number of requests : 1000
-
+-
 Number of concurrent requests : 100
-
+-
 
 Below is the command to get AB metrics
-
+-
 ab -c 100 -n 1000 -H 'AUTHORIZED-API-KEY:abcXYZkeyAPI-4' -v 1 localhost:8080/hotels/1/price/sort/asc
 
 
-Metrics
---------
+# Metrics
+
 
 
 Server Software:        
@@ -57,25 +57,25 @@ Document Length:        198 bytes
 Concurrency Level:      100
 
 Time taken for tests:   1.470 seconds
------------------------------
+-
 Complete requests:      1000
------------------------------
+-
 Failed requests:        0
 -
 Non-2xx responses:      1000
------------------------------
+-
 Requests per second:    680.40 [#/sec] (mean)
------------------------------
+-
 Time per request:       146.973 [ms] (mean)
------------------------------
+-
 Time per request:       1.470 [ms] (mean, across all concurrent requests)
------------------------------
+-
 Transfer rate:          234.70 [Kbytes/sec] received
------------------------------
+-
 
 
 Percentage of the requests served within a certain time (ms)
-------------------------------------------------------------
+-
   50%    142
   
   66%    165
