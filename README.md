@@ -46,28 +46,6 @@ ab -c 100 -n 1000 -H 'AUTHORIZED-API-KEY:abcXYZkeyAPI-4' -v 1 localhost:8080/hot
 Metrics
 --------
 
-Completed 100 requests
-
-Completed 200 requests
-
-Completed 300 requests
-
-Completed 400 requests
-
-Completed 500 requests
-
-Completed 600 requests
-
-Completed 700 requests
-
-Completed 800 requests
-
-Completed 900 requests
-
-Completed 1000 requests
-
-Finished 1000 requests
-
 
 Server Software:        
 Server Hostname:        localhost
@@ -85,31 +63,15 @@ Concurrency Level:      100
 # Failed requests:        0
 
 Non-2xx responses:      1000
-
-Total transferred:      353223 bytes
-
-HTML transferred:       198223 bytes
-
+-----------------------------
 Requests per second:    680.40 [#/sec] (mean)
-
+-----------------------------
 Time per request:       146.973 [ms] (mean)
-
+-----------------------------
 Time per request:       1.470 [ms] (mean, across all concurrent requests)
-
+-----------------------------
 Transfer rate:          234.70 [Kbytes/sec] received
-
-
-Connection Times (ms)
----------------------
-
-                min mean[+/-sd] median  max
-Connect:        0   39  38.4     27     168
-
-Processing:    16  105  43.7    112     347
-
-Waiting:       10   90  43.3     73     275
-
-Total:         64  143  42.2    142     351
+-----------------------------
 
 
 Percentage of the requests served within a certain time (ms)
